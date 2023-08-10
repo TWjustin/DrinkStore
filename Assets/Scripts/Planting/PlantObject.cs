@@ -10,4 +10,6 @@ public class PlantObject : ScriptableObject
     public float timeBtwStages;
     public int price;
     public Sprite icon;
+
+    public Item harvestItem;
 }

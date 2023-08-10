@@ -58,6 +58,8 @@ public class PlotManager : MonoBehaviour
         Debug.Log("Harvest");
         isPlanted = false;
         plant.gameObject.SetActive(false);
+        
+        InventoryManager.Instance.AddItem(selectedPlant.harvestItem);    //
     }
 
     void Plant(PlantObject newPlant)

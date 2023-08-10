@@ -20,3 +20,4 @@ MonoBehaviour:
   timeBtwStages: 2
   price: 10
   icon: {fileID: 21300000, guid: 47c14d5402e3af14f812666bc9806ec3, type: 3}
+  harvestItem: {fileID: 11400000, guid: fc189f8b9db94c245a56f42a4c711a94, type: 2}

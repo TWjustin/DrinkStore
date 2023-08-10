@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72c2cf80e14dc849a7680df15a103b8, type: 3}
+  m_Name: Hay
+  m_EditorClassIdentifier: 
+  plantName: "\u7267\u8349"
+  plantStages:
+  - {fileID: 21300000, guid: bdee2ff54f043d64bb5578317426ecf3, type: 3}
+  - {fileID: 21300000, guid: a8cc57c8d635d5044a8afa25203bb08f, type: 3}
+  - {fileID: 21300000, guid: 105fc6050c732b94cbce6eb7f31461b5, type: 3}
+  timeBtwStages: 3
+  price: 10
+  icon: {fileID: 21300000, guid: 105fc6050c732b94cbce6eb7f31461b5, type: 3}
+  harvestItem: {fileID: 11400000, guid: 089ecd8fe39eb19468922968b4e72a04, type: 2}

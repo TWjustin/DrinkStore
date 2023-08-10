@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a72c2cf80e14dc849a7680df15a103b8, type: 3}
+  m_Script: {fileID: 11500000, guid: c1c786dcfc9dc2a47864eed454f96455, type: 3}
   m_Name: Wheat
   m_EditorClassIdentifier: 
-  plantName: "\u5C0F\u9EA5"
-  plantStages:
-  - {fileID: 21300000, guid: bdee2ff54f043d64bb5578317426ecf3, type: 3}
-  - {fileID: 21300000, guid: a8cc57c8d635d5044a8afa25203bb08f, type: 3}
-  - {fileID: 21300000, guid: 01854e28bbb85bb4eae03d117de735ee, type: 3}
-  timeBtwStages: 2
-  price: 10
+  id: 2
+  itemName: 
+  num: 0
   icon: {fileID: 21300000, guid: 01854e28bbb85bb4eae03d117de735ee, type: 3}
