@@ -10,9 +10,8 @@ public class FarmManager : MonoBehaviour
     public int money = 1000;
     public Text moneyText;
     
-    GameObject selectedIcon;
+    public GameObject storePanel;
     
-    // Start is called before the first frame update
     void Start()
     {
         moneyText.text = money.ToString();
@@ -20,27 +19,15 @@ public class FarmManager : MonoBehaviour
 
     public void SelectPlant(PlantItem newPlant)
     {
-        if (selectedPlant == newPlant)
-        {
-            Debug.Log("Deselect" + selectedPlant.plant.plantName);
-            if (selectedIcon != null)
-            {
-                Destroy(selectedIcon);
-            }
-            selectedPlant = null;
-            isPlanting = false;
-        }
-        else
-        {
-            if (selectedIcon != null)
-            {
-                Destroy(selectedIcon);
-            }
-            selectedPlant = newPlant;
-            selectedIcon = Instantiate(selectedPlant.selectedIcon, selectedPlant.transform.GetChild(0).transform);
-            Debug.Log("Select" + selectedPlant.plant.plantName);
-            isPlanting = true;
-        }
+        selectedPlant = newPlant;
+        isPlanting = true;
+        storePanel.SetActive(false);
+    }
+
+    public void Deselect()
+    {
+        selectedPlant = null;
+        isPlanting = false;
     }
 
     public void Transaction(int value)

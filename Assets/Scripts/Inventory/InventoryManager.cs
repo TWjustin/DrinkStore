@@ -19,24 +19,25 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Item itemToAdd)
     {
-        Slot existingSlot = FindSlotByItem(itemToAdd);
-
-        if (existingSlot != null)
+        bool foundSlot = false;
+        
+        foreach (var slot in slots)
         {
-            existingSlot.AddItem(itemToAdd);
+            if (slot.Item == itemToAdd)
+            {
+                slot.AddNum();
+                foundSlot = true;
+                return;
+            }
         }
-        else
+        
+        if (!foundSlot)
         {
             GameObject obj = Instantiate(slotPrefab, itemContent);
-            Slot newSlot = obj.AddComponent<Slot>();
+            Slot newSlot = obj.GetComponent<Slot>();
             newSlot.Initialize(itemToAdd);
             slots.Add(newSlot);
         }
-    }
-
-    private Slot FindSlotByItem(Item item)
-    {
-        return slots.Find(slot => slot.Item.id == item.id);
     }
 
     /*

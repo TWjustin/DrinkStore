@@ -22,6 +22,9 @@ public class Inventory_UI : MonoBehaviour
         foreach (var slot in slots)
         {
             GameObject obj = Instantiate(inventorySlot, itemContent);
+            var slotComponent = obj.GetComponent<Slot>();
+            slotComponent.Initialize(slot.Item); // 设置物品槽的初始状态
+            // Debug.Log(slotComponent.Item);
             var itemIcon = obj.transform.GetChild(1).GetComponent<Image>();
             itemIcon.sprite = slot.Icon;
             var numText = obj.transform.GetChild(0).GetComponent<Text>();

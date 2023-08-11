@@ -6,16 +6,12 @@ using UnityEngine.UI;
 public class PlantItem : MonoBehaviour
 {
     public PlantObject plant;
+    private FarmManager fm;
     
     public Text nameText;
     public Text priceText;
     public Image icon;
-    
-    public GameObject selectedIcon;
 
-    private FarmManager fm;
-    
-    // Start is called before the first frame update
     void Start()
     {
         fm = FindObjectOfType<FarmManager>();
