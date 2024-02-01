@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlotManager : MonoBehaviour
 {
@@ -13,14 +14,15 @@ public class PlotManager : MonoBehaviour
     private float timer;
     
     PlantObject selectedPlant;
-    
     FarmManager fm;
-    
+    MoneyManager mm;
+
     private void Start()
     {
         plant = transform.GetChild(0).GetComponent<SpriteRenderer>();
         plantCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
         fm = transform.parent.parent.GetComponent<FarmManager>();
+        mm = FindObjectOfType<MoneyManager>();
     }
 
     private void Update()
@@ -40,17 +42,30 @@ public class PlotManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (isPlanted)
+        if (!IsPointerOverUI())
         {
-            if (plantStage == selectedPlant.plantStages.Length - 1 && !fm.isPlanting)
+            if (isPlanted)
             {
-                Harvest();
+                if (plantStage == selectedPlant.plantStages.Length - 1 && !fm.isPlanting)
+                {
+                    Harvest();
+                }
+            }
+            else if (fm.isPlanting && fm.selectedPlant.plant.price <= mm.money) //
+            {
+                Plant(fm.selectedPlant.plant);
             }
         }
-        else if (fm.isPlanting && fm.selectedPlant.plant.price <= fm.money)
+    }
+    
+    private bool IsPointerOverUI()
+    {
+        if (EventSystem.current != null)
         {
-            Plant(fm.selectedPlant.plant);
+            // 檢查觸摸點是否在 UI 元素上
+            return EventSystem.current.IsPointerOverGameObject();
         }
+        return false;
     }
 
     void Harvest()
@@ -58,7 +73,8 @@ public class PlotManager : MonoBehaviour
         isPlanted = false;
         plant.gameObject.SetActive(false);
         
-        InventoryManager.Instance.AddItem(selectedPlant.harvestItem);    //
+        // 自己加的
+        InventoryManager.Instance.AddItem(selectedPlant.harvestItem);
     }
 
     void Plant(PlantObject newPlant)
@@ -66,7 +82,7 @@ public class PlotManager : MonoBehaviour
         selectedPlant = newPlant;
         isPlanted = true;
         
-        fm.Transaction(-selectedPlant.price);
+        mm.Transaction(-selectedPlant.price);   //
         
         plantStage = 0;
         UpdatePlant();
